@@ -13,6 +13,7 @@ pipeline {
                git branch: 'main', url: 'https://github.com/AbdiAutom/JenkinsPipeline.git'
                sh "mvn clean"
                sh "mvn test -PdemoTests"
+               
             }
         }
     }
