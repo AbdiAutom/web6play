@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Default test(failed)">
+    <classes>
+      <class name="onBoarding.InscriptionCasNominal">
+        <methods>
+          <include name="tearnDownDriver"/>
+        </methods>
+      </class> <!-- onBoarding.InscriptionCasNominal -->
+      <class name="onBoarding.ConnexionCasNominal">
+        <methods>
+          <include name="initClass"/>
+          <include name="tearnDownDriver"/>
+          <include name="testVisuelPageConnexion"/>
+          <include name="tearnDown"/>
+        </methods>
+      </class> <!-- onBoarding.ConnexionCasNominal -->
+      <class name="onBoarding.ConnexionNonPassant">
+        <methods>
+          <include name="tearnDownDriver"/>
+          <include name="cliquerMonCompte"/>
+          <include name="testAvecEmailIncorrect"/>
+          <include name="testAvecMdpIncorrect"/>
+          <include name="tearnDownTest"/>
+          <include name="initTest"/>
+          <include name="tearnDown"/>
+        </methods>
+      </class> <!-- onBoarding.ConnexionNonPassant -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
