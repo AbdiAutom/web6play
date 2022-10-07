@@ -1,0 +1,19 @@
+pipeline {
+         agent any
+         tools {
+        // Installation Maven selon le nom donné dans la configuration globale de Jenkins
+        maven "Mvn 3.8.6"
+    }
+                    stages {
+      
+        stage('Pre Build'){
+            steps{
+               // sh "chmod +x driver/chromedriver"
+               echo "toto"
+               git branch: 'main', url: 'https://github.com/AbdiAutom/JenkinsPipeline.git'
+               sh "mvn clean"
+               sh "mvn test -PdemoTests"
+            }
+        }
+    }
+}

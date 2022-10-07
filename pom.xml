@@ -18,6 +18,37 @@
     <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
 
+
+ <profiles>
+  <profile>
+  <id>OnboardingTests</id>
+  
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+        
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-surefire-plugin</artifactId>
+	        <version>3.0.0-M6</version>
+	        <configuration>
+	          <suiteXmlFiles>
+	            <suiteXmlFile>testngListenerRapport.xml</suiteXmlFile>
+	          </suiteXmlFiles>
+	        </configuration>
+     
+        </plugin>
+       
+      </plugins>
+    </pluginManagement>
+  </build>
+  
+  </profile>
+  
+  
+  </profiles>
+  
+  
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -69,6 +100,14 @@
     <groupId>com.aventstack</groupId>
     <artifactId>extentreports</artifactId>
     <version>5.0.9</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.24</version>
+    <scope>provided</scope>
 </dependency>
 
   </dependencies>

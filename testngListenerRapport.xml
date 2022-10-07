@@ -7,8 +7,6 @@
   <test thread-count="5" name="Test">
     <packages>
   	<package name="onBoarding"></package>
-  	<package name="player"></package>
-  	<package name="homePage"></package>
     </packages>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
