@@ -3,3 +3,6 @@
 **/target/
 **/target1/
 *.class
+**/logs/
+**/TestsScreenShots/
+**/test-output1/
