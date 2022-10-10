@@ -1,2 +1,3 @@
-RapportsHTML
+/RapportsHTML/
+/target/
 *.class
