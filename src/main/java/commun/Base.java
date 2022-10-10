@@ -28,28 +28,25 @@ import pagesProject.MonComptePage;
  */
 
 public class Base {
-
-	/*
-	 * Comprendre la différence entre public et public static, l'impact sur la variable driver par exemple?
-	 */
 	
 	public static WebDriver driver ;
-	public Properties prop = new Properties();
+	public Properties propriete = new Properties();
 	public static String dateJour = String.format("%1$tY-%1$tm-%1$td", new Date());
 	
 	//@BeforeSuite
 	@SuppressWarnings("deprecation")
 	public WebDriver setUpDriver() throws IOException, InterruptedException
 	{
-		FileInputStream file = new FileInputStream("/Users/abdi.bileh17/eclipse-workspace/Web2/src/main/java/config/Donnees.Properties");
+		//FileInputStream file = new FileInputStream("/Users/abdi.bileh17/eclipse-workspace/Web2/src/main/java/config/Donnees.Properties");
+		FileInputStream file = new FileInputStream("src/main/java/config/Donnees.Properties");
 		//FileInputStream file = new FileInputStream("/Users/abdi.bileh17/Documents/Java/Web/src/test/Streaming/commun/Donnees.Properties");
 		//FileInputStream file = new FileInputStream("user.dir"+"/src/test/Streaming/commun/Donnees.Properties"); // Vérifie si le lien est ok 
 		
 		
 		
-		prop.load(file);
-		String browserName = prop.getProperty("browser");
-		String url6play = prop.getProperty("url");
+		propriete.load(file);
+		String browserName = propriete.getProperty("browser");
+		String url6play = propriete.getProperty("url");
 		System.out.println("Le test tourne avec le browser : "+browserName);
 		
 		if(browserName.equals("chrome"))

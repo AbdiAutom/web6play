@@ -53,8 +53,10 @@ public class GetListeProgMiseEnAvant extends Base{
 		LocalDate date = DateOfDay.dateDay();						//la date du jour peut être mise dans une classe à part
 		String formattedDate = date.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
 		maListe.add(formattedDate);
-		DataExcel.writeDataListe(maListe, "Feuil1","/Users/abdi.bileh17/Documents/ExcelData.xlsx");
-		DataExcel.wordData(maListe, "/Users/abdi.bileh17/Documents/WriteToFile.txt");
+		//DataExcel.writeDataListe(maListe, "Feuil1","/Users/abdi.bileh17/Documents/ExcelData.xlsx");
+		DataExcel.writeDataListe(maListe, "Feuil1", "ExcelData.xlsx");
+		//DataExcel.wordData(maListe, "/Users/abdi.bileh17/Documents/WriteToFile.txt");
+		DataExcel.wordData(maListe, "WriteToFile.txt");
 		maListe.clear();
 
 		int nbProg = listeProg.size();
@@ -73,8 +75,10 @@ public class GetListeProgMiseEnAvant extends Base{
 			System.out.println("Description : "+commentProg);
 			
 			// Export les données vers excel + word 
-			DataExcel.writeDataListe(maListe, "Feuil1","/Users/abdi.bileh17/Documents/ExcelData.xlsx");
-			DataExcel.wordData(maListe, "/Users/abdi.bileh17/Documents/WriteToFile.txt");
+			//DataExcel.writeDataListe(maListe, "Feuil1","/Users/abdi.bileh17/Documents/ExcelData.xlsx");
+			DataExcel.writeDataListe(maListe, "Feuil1", "ExcelData.xlsx");
+			//DataExcel.wordData(maListe, "/Users/abdi.bileh17/Documents/WriteToFile.txt");
+			DataExcel.wordData(maListe, "WriteToFile.txt");
 			maListe.clear();
 		}
 	}	

@@ -3,12 +3,8 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="onBoarding.ConnexionCasNominal"/>
-      <class name="onBoarding.ConnexionNonPassant"/>
       <class name="homePage.GetListeProgMiseEnAvant"/>
-      <class name="onBoarding.InscriptionCasNominal"/>
       <class name="homePage.infosProgLive"/>
-      <class name="player.AccesLiveUserNonConnecte"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

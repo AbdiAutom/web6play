@@ -6,6 +6,14 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
+      <class name="homePage.GetListeProgMiseEnAvant">
+        <methods>
+          <include name="tearnDownDriver"/>
+          <include name="getListeProgmmeMEA"/>
+          <include name="tearnDown"/>
+          <include name="initClass"/>
+        </methods>
+      </class> <!-- homePage.GetListeProgMiseEnAvant -->
       <class name="homePage.infosProgLive">
         <methods>
           <include name="tearnDownDriver"/>
@@ -14,23 +22,6 @@
           <include name="initClass"/>
         </methods>
       </class> <!-- homePage.infosProgLive -->
-      <class name="player.AccesLiveUserNonConnecte">
-        <methods>
-          <include name="tearnDownDriver"/>
-          <include name="testConnexionPassant"/>
-          <include name="tearnDown"/>
-          <include name="initClass"/>
-        </methods>
-      </class> <!-- player.AccesLiveUserNonConnecte -->
-      <class name="onBoarding.ConnexionCasNominal">
-        <methods>
-          <include name="testConnexionPassant"/>
-          <include name="initClass"/>
-          <include name="tearnDownDriver"/>
-          <include name="testVisuelPageConnexion"/>
-          <include name="tearnDown"/>
-        </methods>
-      </class> <!-- onBoarding.ConnexionCasNominal -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
