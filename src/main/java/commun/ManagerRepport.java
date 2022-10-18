@@ -1,4 +1,3 @@
-
 package commun;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -13,23 +12,19 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class ManagerRepport {
 	public static ExtentReports extent;
-	public static ExtentTest test;
+	//public static ExtentTest test;
 	
 	public static ExtentReports extentGenerique(String cheminFichier)
 	{	
+		ExtentSparkReporter reporter = new ExtentSparkReporter(cheminFichier);
+		reporter.config().setReportName("report Name");
+		reporter.config().setDocumentTitle("Test Autom");
+		
 		extent = new ExtentReports();
-		ExtentSparkReporter spark = new ExtentSparkReporter(cheminFichier);
-		extent.attachReporter(spark);
-		
-		
-		spark.config().setReportName("report Name");
-		spark.config().setDocumentTitle("Test Autom");
+		extent.attachReporter(reporter);
 		extent.setSystemInfo("Tester", "Abdi Toto");
 		extent.setSystemInfo("os", "MacOS");
-		
-	
+			
 		return extent;	
 	}
 }
-
-
