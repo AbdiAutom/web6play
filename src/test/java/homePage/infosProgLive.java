@@ -51,7 +51,7 @@ public class infosProgLive extends Base{
 	public void getInfosProgLive() throws InterruptedException, IOException 
 	{
 		//String chaine;
-		String [] tabChaines = {"m6","w9","6ter","guilli"};
+		String [] tabChaines = {"m6","w9","6ter","guilli"};  //mets ça dans un fichier propriety
 		List<String> chaines = new ArrayList<String> (Arrays.asList(tabChaines));
 		Iterator<String> it = chaines.iterator();
 		/*
@@ -61,7 +61,7 @@ public class infosProgLive extends Base{
 		}
 		 */
 
-		String chaine = "w9";
+		String chaine = "m6";
 		String heure = homePage.getHeureProgLive(chaine);
 		String titre = homePage.getTitreLive(chaine);
 		System.out.println("heure : "+heure);

@@ -13,6 +13,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterSuite;
 
@@ -37,24 +38,21 @@ public class Base {
 	@SuppressWarnings("deprecation")
 	public WebDriver setUpDriver() throws IOException, InterruptedException
 	{
-		//FileInputStream file = new FileInputStream("/Users/abdi.bileh17/eclipse-workspace/Web2/src/main/java/config/Donnees.Properties");
 		FileInputStream file = new FileInputStream("src/main/java/config/Donnees.Properties");
-		//FileInputStream file = new FileInputStream("/Users/abdi.bileh17/Documents/Java/Web/src/test/Streaming/commun/Donnees.Properties");
-		//FileInputStream file = new FileInputStream("user.dir"+"/src/test/Streaming/commun/Donnees.Properties"); // Vérifie si le lien est ok 
-		
-		
 		
 		propriete.load(file);
-		String browserName = propriete.getProperty("browser");
+		//String browserName = propriete.getProperty("browser");
+		String browserName = System.getProperty("browser")!=null ? System.getProperty("browser") : propriete.getProperty("browser");
+		
 		String url6play = propriete.getProperty("url");
 		System.out.println("Le test tourne avec le browser : "+browserName);
 		
-		if(browserName.equals("chrome"))
+		/*if(browserName.equals("chrome"))
 		{
 			System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
 			driver = new ChromeDriver();
-		}			
-		else if(browserName.equals("firefox"))
+		}	*/
+		 if(browserName.equals("firefox"))
 		{
 			 System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
 			  driver = new FirefoxDriver();
@@ -63,6 +61,18 @@ public class Base {
 		{
 			//execute avec IE driver
 		}
+		 
+//ce bloc est crée pour faire des test avec le headless
+		else if (browserName.contains("chrome")) {
+			ChromeOptions option = new ChromeOptions();
+			if(browserName.contains("headless")) {
+				option.addArguments("headless");				
+			}		
+			System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+			driver = new ChromeDriver(option);
+			driver.manage().window().maximize();
+		}
+		 
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get(url6play);
 		driver.manage().window().maximize();

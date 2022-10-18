@@ -1,7 +1,7 @@
 package commun;
 
 import java.io.IOException;
-import java.util.Date;
+//import java.util.Date;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
@@ -10,7 +10,7 @@ import org.testng.ITestResult;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.MediaEntityBuilder;
+//import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 
 /**
@@ -18,8 +18,10 @@ import com.aventstack.extentreports.Status;
  *Crée : le 05/08/2022
  */
 
+
 //extends ManagerRepport
 public class ListenerRapport extends Base implements ITestListener{
+	
 	//public static String dateJour = String.format("%1$tY-%1$tm-%1$td", new Date());
 	public static ExtentTest test;
 	public static ExtentReports extent = ManagerRepport.extentGenerique("RapportsHTML/Spark"+dateJour+".html");
@@ -28,7 +30,7 @@ public class ListenerRapport extends Base implements ITestListener{
 	public void onStart(ITestContext context) 
 	{
 		//context.setAttribute("WebDriver", context.getName());
-		//test = extent.createTest(context.get);
+		//test = extent.createTest(context.getName());
 		//test.info("Test Start");
 	}
 
@@ -43,6 +45,7 @@ public class ListenerRapport extends Base implements ITestListener{
 	@Override
 	public void onTestStart(ITestResult result)    //Trouve une solution pour demarrer à chaque classe et donc organiser par classe mais non pas mééthode
 	{
+
 		test = extent.createTest(result.getName());
 		test.info(" Test "+result.getMethod().getMethodName()+" started ");
 	}
