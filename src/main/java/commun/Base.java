@@ -37,7 +37,7 @@ import pagesProject.MonComptePage;
 public class Base {
 	
 	public static WebDriver driver ;
-	public static String dateJour = String.format("%1$tH-%1$tM %1$td:%1$tm:%1$tY", new Date());
+	public static String dateJour = String.format("%1$td:%1$tm:%1$tY %1$tH-%1$tM", new Date());
 	
 	//@BeforeSuite
 	@SuppressWarnings("deprecation")

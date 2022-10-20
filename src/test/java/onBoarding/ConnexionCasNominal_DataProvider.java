@@ -89,6 +89,7 @@ public class ConnexionCasNominal_DataProvider extends Base
 		String emailMonCompte = pageMonCompte.verifierCompteEmail();
 		assertEquals(emailMonCompte,input.get("email"),"L'email sur mon compte ne correspond pas à celui utilisé pour la connexion!");			
 		
+		Thread.sleep(5000);
 		Base.deconnexionDeCompte();
 		driver.close();
 	}
