@@ -3,6 +3,8 @@ package onBoarding;
 import static org.testng.Assert.assertEquals;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
@@ -40,26 +42,35 @@ public class ConnexionCasNominal_DataProvider extends Base
 	@BeforeClass 
 	public void initClass() throws IOException, InterruptedException
 	{
+		/*
 		driver = setUpDriver();
 		homePage = new HomePage(driver);	
 		pageConnexion = new ConnexionPage(driver);
 		pageMonCompte = new MonComptePage(driver);
 		Thread.sleep(2000);
 		homePage.cliquerMonCompteBtn();
+		*/
 	}
 	
 	//méthode pour un test fonctionnel cas passant 
-	@Test(dataProvider = "dataprovider")
-	public void testConnexionPassant(String email, String mdp) throws InterruptedException
+	@Test(dataProvider = "dataprovider3")
+	public void testConnexionPassant(HashMap<String, String> input) throws InterruptedException, IOException
 	{
+		driver = setUpDriver();
+		homePage = new HomePage(driver);	
+		pageConnexion = new ConnexionPage(driver);
+		pageMonCompte = new MonComptePage(driver);
+		Thread.sleep(2000);
+		homePage.cliquerMonCompteBtn();
+		
 		//String email = "abdi.bilehm6@gmail.com";
 		System.out.println("--- Ceci est un test fonctionnel de la page OB connexion ---");
-		pageConnexion.setEmail(email);
+		pageConnexion.setEmail(input.get("email"));
 		pageConnexion.verifierLabelEmail();
 		pageConnexion.verifierCheckVertEmail();
 		pageConnexion.verifierCheckVertEmail();
 
-		pageConnexion.setMdp(mdp);
+		pageConnexion.setMdp(input.get("mdp"));
 		pageConnexion.verifierLabelMdp();
 		pageConnexion.cliquerSurOeilMdp();
 		String mdpVisible1 = pageConnexion.verifierMdpVisible();
@@ -76,9 +87,13 @@ public class ConnexionCasNominal_DataProvider extends Base
 		Thread.sleep(2000);
 		
 		String emailMonCompte = pageMonCompte.verifierCompteEmail();
-		assertEquals(emailMonCompte,email,"L'email sur mon compte ne correspond pas à celui utilisé pour la connexion!");			
+		assertEquals(emailMonCompte,input.get("email"),"L'email sur mon compte ne correspond pas à celui utilisé pour la connexion!");			
+		
+		Base.deconnexionDeCompte();
+		driver.close();
 	}
 
+	//Donnée recupérée via un simple tableau 
 	@DataProvider (name = "dataprovider")
 	public Object[][] getData() {
 		Object[][] profile = new Object[3][2];
@@ -94,11 +109,33 @@ public class ConnexionCasNominal_DataProvider extends Base
 		return profile;
     
 	}
+
+	//Donnée recupérée via un dico hashmap
+	@DataProvider (name = "dataprovider2")
+	public Object[][] getData2() {
+		HashMap<String, String> map1 = new HashMap<String, String>();
+		map1.put("email" , "abdi.bilehm6@gmail.com");
+		map1.put("mdp","bonjourA1");
+		HashMap<String, String> map2 = new HashMap<String, String>();
+		map2.put("email" , "abdi.bilehm66@gmail.com");
+		map2.put("mdp","bonjourA1");
+		HashMap<String, String> map3 = new HashMap<String, String>();
+		map3.put("email" , "abdi.bilehm6@gmail.com");
+		map3.put("mdp","bonjourA1");
+		return new Object[][] {{map1},{map2}, {map3}};
+    
+	}
 	
-	@AfterClass
+	//Donnée recupérée via un fichier Json
+	@DataProvider (name = "dataprovider3")
+	public Object[][] getData3() throws IOException {
+		List<HashMap<String, String>> data = getJsonDataToMap(System.getProperty("user.dir")+"/src/main/java/config/IdUsers.json");
+		return new Object[][] {{data.get(0)},{data.get(1)}, {data.get(2)}};  
+	}
+	//@AfterClass
 	public void tearnDown() throws InterruptedException
 	{
-		Base.deconnexionDeCompte();
-		driver.close();
+		//Base.deconnexionDeCompte();
+		//driver.close();
 	}
 }

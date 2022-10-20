@@ -25,7 +25,8 @@ public class MonComptePage {
 	}
 		
 	//la liste de tous les objects utilisés se trouvant dans la page mon compte 
-		@FindBy(xpath="//button[@class='sc-8qd2v2-0 gmAIju sc-1esye45-2 hnEUlH sc-10ahcun-0 iraLqh is-primary']") WebElement deconnectionBtn2;	
+		//@FindBy(xpath="//button[@class='sc-8qd2v2-0 gmAIju sc-1esye45-2 hnEUlH sc-10ahcun-0 iraLqh is-primary']") WebElement deconnectionBtn2;	
+		@FindBy(xpath="//button[@class='sc-8qd2v2-0 gmAIju sc-1esye45-2 diJOSd sc-10ahcun-0 iraLqh is-primary']") WebElement deconnectionBtn2;	
 		@FindBy(xpath="//input[@id='email']") WebElement monCompteEmail;
 		@FindBy(xpath="//a[@class='sc-1esye45-2 bdXdiT sc-o6a45d-1 sc-1onmnf9-0 eOYppo jSjwNb is-secondary']") WebElement supprimerCompteBtn2;
 		@FindBy(xpath="//a[@class='zain8u-1 llrjHy active']") WebElement vuEnsembleBtn;

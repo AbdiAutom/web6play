@@ -4,7 +4,10 @@ package commun;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -16,6 +19,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterSuite;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import pagesProject.ConsentsPage;
 import pagesProject.MonComptePage;
@@ -110,6 +116,19 @@ public class Base {
 		File destinationFile = new File(System.getProperty("user.dir") + "//TestsScreenShots//"+dateJour+"_"+testCaseName+"_"+".png");
 		FileUtils.copyFile(source, destinationFile);
 		return System.getProperty("user.dir")+"//TestsScreenShots//"+dateJour+"_"+testCaseName+"_"+".png";
+	}
+	
+	//Cette méthode recupère des données depuis un fichier Json
+	public List<HashMap<String, String>> getJsonDataToMap(String pathLink) throws IOException {
+		//read json to sting
+	String jsonContent = FileUtils.readFileToString(new File(pathLink), StandardCharsets.UTF_8);
+	
+	//String to hashmap (use jackson data)
+	ObjectMapper mapper = new ObjectMapper();
+	List<HashMap<String, String>> data = mapper.readValue(jsonContent, new TypeReference <List<HashMap<String, String>>>(){
+		
+	});
+	return data;
 	}
 }
  
